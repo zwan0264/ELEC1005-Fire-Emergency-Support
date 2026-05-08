@@ -84,7 +84,7 @@ Responders use a simplified login screen to represent restricted access for auth
 
 ## Repository Structure
 
-## `/docs`
+## /docs
 
 Project documentation, planning records, sprint summaries, and development notes.
 
@@ -103,7 +103,7 @@ Stores written project documentation used throughout the Agile development proce
 
 ---
 
-## `/screenshots`
+## /screenshots
 
 Application screenshots and implementation evidence.
 
@@ -125,7 +125,7 @@ Provides visual evidence of the implemented Power Apps screens, workflow progres
 
 ---
 
-## `/testing`
+## /testing
 
 Testing records, bug tracking, and integration validation.
 
@@ -140,7 +140,7 @@ Documents testing activities, identified issues, workflow validation, and system
 
 ---
 
-## `/powerapps-source`
+## /powerapps-source
 
 Exported Power Apps files and backend integration resources.
 
@@ -154,7 +154,7 @@ Stores the Power Apps source package and backend integration references used for
 
 ---
 
-## `/AI-Journal`
+## /AI-Journal
 
 AI usage reflections and learning records.
 
