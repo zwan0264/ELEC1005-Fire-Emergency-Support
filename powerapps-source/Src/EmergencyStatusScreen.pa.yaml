@@ -1,0 +1,111 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  EmergencyStatusScreen:
+    Properties:
+      Fill: =RGBA(249, 251, 251, 1)
+    Children:
+      - rectCivilianStatusHeader:
+          Control: Rectangle@2.3.0
+          Properties:
+            Fill: =RGBA(184, 0, 0, 1)
+            Height: =194
+            Width: =640
+      - lblCivilianStatusHeader:
+          Control: ModernText@1.0.0
+          Properties:
+            Color: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =78
+            Size: =42
+            Text: ="Fire Brigade Alerts"
+            Width: =390
+            X: =125
+            Y: =58
+      - lblCivilianCurrentStatus:
+          Control: ModernText@1.0.0
+          Properties:
+            Text: ="Current Status:"
+            X: =30
+            Y: =240
+      - icoCivilianStatusClock:
+          Control: ModernIcon@1.1.0
+          Properties:
+            Height: =60
+            Icon: ="Clock"
+            Width: =81
+            X: =44
+            Y: =322
+      - prgCivilianStatus:
+          Control: Progress@1.1.34
+          Properties:
+            BasePaletteColor: =RGBA(5, 102, 178, 1)
+            Height: =44
+            Indeterminate: =true
+            ProgressColor: ='Progress.ProgressColor'.Brand
+            Shape: ='Progress.Shape'.Rounded
+            Thickness: ='Progress.Thickness'.Large
+            X: =145
+            Y: =330
+      - lblCivilianStatusValue:
+          Control: ModernText@1.0.0
+          Properties:
+            Text: =varSelectedIncident.Status.Value
+            X: =220
+            Y: =290
+      - lblSafetyGuidelines:
+          Control: ModernText@1.0.0
+          Properties:
+            Height: =284
+            Text: |-
+              ="
+              Safety Guidelines:
+
+              • Stay calm and move away from danger
+              • Do not re-enter the building
+              • Wait for responder instructions
+              • Keep your phone nearby"
+            Width: =485
+            X: =30
+            Y: =440
+      - lblCivilianCurrentLocation:
+          Control: ModernText@1.0.0
+          Properties:
+            Text: |-
+              ="Current Location: " & Text(Location.Latitude) & ", " & Text(Location.Longitude)
+            Width: =610
+            X: =30
+            Y: =828
+      - sepStatusBottom:
+          Control: ModernText@1.0.0
+          Properties:
+            FontWeight: =FontWeight.Bold
+            Text: ="__________________________________________________________"
+            Width: =640
+            Y: =410
+      - sepStatusTop:
+          Control: ModernText@1.0.0
+          Properties:
+            FontWeight: =FontWeight.Bold
+            Text: ="__________________________________________________________"
+            Width: =640
+            Y: =751
+      - btnStatusBack:
+          Control: ModernButton@1.0.0
+          Properties:
+            Appearance: =ButtonAppearance.Transparent
+            BasePaletteColor: =RGBA(245, 17, 21, 1)
+            Height: =72
+            Icon: ="ArrowExit"
+            IconStyle: =IconStyle.Filled
+            Layout: =ButtonLayout.IconOnly
+            Text: =
+            Width: =108
+            X: =17
+            Y: =14

@@ -1,0 +1,110 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  ResponderLoginScreen:
+    Properties:
+      Fill: =RGBA(249, 251, 251, 1)
+    Children:
+      - lblLoginAppName:
+          Control: ModernText@1.0.0
+          Properties:
+            Align: =Align.Center
+            Height: =68
+            Text: ="Volunteer Fire Brigade"
+            Width: =276
+            X: =179
+            Y: =181
+      - txtLoginUsername:
+          Control: ModernTextInput@1.1.0
+          Properties:
+            Placeholder: ="Username"
+            X: =33
+            Y: =411
+      - txtLoginPassword:
+          Control: ModernTextInput@1.1.0
+          Properties:
+            DisplayMode: =TextMode.Password
+            Placeholder: ="Password"
+            Required: =true
+            Type: |-
+              =If(
+                  varShowPassword,
+                  TextInputType.SingleLine,
+                  TextInputType.Password
+              )
+            X: =33
+            Y: =506
+      - btnResponderLogin:
+          Control: ModernButton@1.0.0
+          Properties:
+            BasePaletteColor: =RGBA(255, 0, 38, 1)
+            OnSelect: |-
+              =Set(
+                  varResponder,
+                  LookUp(
+                      ResponderDetails,
+                      Username = txtLoginUsername.Text &&
+                      Password = txtLoginPassword.Text
+                  )
+              );
+
+              If(
+                  IsBlank(varResponder),
+
+                  Notify(
+                      "Invalid username or password.",
+                      NotificationType.Error
+                  ),
+
+                  Navigate(
+                      LoginSuccessScreen,
+                      ScreenTransition.Fade
+                  )
+              )
+            Text: ="Login"
+            X: =175
+            Y: =630
+      - btnLoginBack:
+          Control: ModernButton@1.0.0
+          Properties:
+            BasePaletteColor: =RGBA(252, 0, 38, 1)
+            Height: =62
+            Icon: ="ArrowLeft"
+            OnSelect: =Navigate(RoleSelectionScreen, ScreenTransition.Fade)
+            Text: ="Back"
+            Width: =200
+            X: =33
+            Y: =53
+      - lblResponderLoginTitle:
+          Control: ModernText@1.0.0
+          Properties:
+            Align: =Align.Center
+            Height: =68
+            Text: ="Responder Login"
+            Width: =276
+            X: =179
+            Y: =249
+      - icoPasswordInfo:
+          Control: ModernInformationButton@1.0.0
+          Properties:
+            Content: =If(varShowPassword, "Hide", "Show")
+            OnSelect: =Set(varShowPassword,!varShowPassword)
+            X: =551
+            Y: =517
+      - btnSignupLink:
+          Control: ModernButton@1.0.0
+          Properties:
+            Appearance: =ButtonAppearance.Subtle
+            BasePaletteColor: =RGBA(255, 0, 38, 1)
+            Height: =47
+            OnSelect: =Navigate(ResponderSignupScreen, ScreenTransition.Fade)
+            Text: ="Sign Up"
+            Width: =118
+            X: =475
+            Y: =583

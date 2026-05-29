@@ -1,0 +1,88 @@
+{
+  "Resources": [
+    {
+      "Name": "SampleCardImage",
+      "Schema": "i",
+      "IsSampleData": true,
+      "IsWritable": false,
+      "Type": "ResourceInfo",
+      "FileName": "/ctrllib/modernCard/images/SampleCardImage.svg",
+      "Path": "/ctrllib/modernCard/images/SampleCardImage.svg",
+      "Content": "Image",
+      "ResourceKind": "Uri",
+      "RootPath": "ms-appx:///ctrllib/modernCard/images/SampleCardImage.svg"
+    },
+    {
+      "Name": "SampleCardHeaderImage",
+      "Schema": "i",
+      "IsSampleData": true,
+      "IsWritable": false,
+      "Type": "ResourceInfo",
+      "FileName": "/ctrllib/modernCard/images/SampleCardHeaderImage.svg",
+      "Path": "/ctrllib/modernCard/images/SampleCardHeaderImage.svg",
+      "Content": "Image",
+      "ResourceKind": "Uri",
+      "RootPath": "ms-appx:///ctrllib/modernCard/images/SampleCardHeaderImage.svg"
+    },
+    {
+      "Name": "SampleImage",
+      "Schema": "i",
+      "IsSampleData": true,
+      "IsWritable": false,
+      "Type": "ResourceInfo",
+      "FileName": "/ctrllib/image/images/SampleImage.svg",
+      "Path": "/ctrllib/image/images/SampleImage.svg",
+      "Content": "Image",
+      "ResourceKind": "Uri",
+      "RootPath": "ms-appx:///ctrllib/image/images/SampleImage.svg"
+    },
+    {
+      "Name": "Screenshot 2026-05-06 at 8.12.46 PM",
+      "Schema": "i",
+      "IsSampleData": false,
+      "IsWritable": false,
+      "Type": "ResourceInfo",
+      "FileName": "997ce436-ad93-4553-a25e-d8d4b90c8073.png",
+      "Path": "Assets\\Images\\997ce436-ad93-4553-a25e-d8d4b90c8073.png",
+      "Content": "Image",
+      "ResourceKind": "LocalFile",
+      "RootPath": "https://dsprdil102seau.blob.core.windows.net/430a3675-f28b-44a4-a68b-a2d25dcce277-1/resource/OTk3Y2U0MzYtYWQ5My00NTUzLWEyNWUtZDhkNGI5MGM4MDcz.png?skoid=58690ece-ec83-4ce2-9ce8-883d4d6a54ee&sktid=975f013f-7f24-47e8-a7d3-abc4752bf346&skt=2026-05-29T05%3A14%3A10Z&ske=2026-05-30T05%3A29%3A10Z&sks=b&skv=2023-01-03&sv=2023-01-03&spr=https&se=2026-05-30T05%3A29%3A10Z&sr=b&sp=r&sig=BTZV0z6qEFzsfjhOLdMA5Ems0Za6pKHi4xxPQSYZRbs%3D"
+    },
+    {
+      "Name": "Screenshot 2026-05-06 at 8.26.09 PM",
+      "Schema": "i",
+      "IsSampleData": false,
+      "IsWritable": false,
+      "Type": "ResourceInfo",
+      "FileName": "a0859c89-4ff4-4db4-9721-d0e6445d7e66.png",
+      "Path": "Assets\\Images\\a0859c89-4ff4-4db4-9721-d0e6445d7e66.png",
+      "Content": "Image",
+      "ResourceKind": "LocalFile",
+      "RootPath": "https://dsprdil102seau.blob.core.windows.net/430a3675-f28b-44a4-a68b-a2d25dcce277-1/resource/YTA4NTljODktNGZmNC00ZGI0LTk3MjEtZDBlNjQ0NWQ3ZTY2.png?skoid=58690ece-ec83-4ce2-9ce8-883d4d6a54ee&sktid=975f013f-7f24-47e8-a7d3-abc4752bf346&skt=2026-05-29T05%3A14%3A10Z&ske=2026-05-30T05%3A29%3A10Z&sks=b&skv=2023-01-03&sv=2023-01-03&spr=https&se=2026-05-30T05%3A29%3A10Z&sr=b&sp=r&sig=%2BwLrHNQR0UzkE%2Ffp36eqOTLF5US2LozvVHFc9gxmwZY%3D"
+    },
+    {
+      "Name": "Screenshot 2026-05-06 at 8.27.11 PM",
+      "Schema": "i",
+      "IsSampleData": false,
+      "IsWritable": false,
+      "Type": "ResourceInfo",
+      "FileName": "91c606f9-ec41-4ebe-b52b-44fbac19c3f3.png",
+      "Path": "Assets\\Images\\91c606f9-ec41-4ebe-b52b-44fbac19c3f3.png",
+      "Content": "Image",
+      "ResourceKind": "LocalFile",
+      "RootPath": "https://dsprdil102seau.blob.core.windows.net/430a3675-f28b-44a4-a68b-a2d25dcce277-1/resource/OTFjNjA2ZjktZWM0MS00ZWJlLWI1MmItNDRmYmFjMTljM2Yz.png?skoid=58690ece-ec83-4ce2-9ce8-883d4d6a54ee&sktid=975f013f-7f24-47e8-a7d3-abc4752bf346&skt=2026-05-29T05%3A14%3A10Z&ske=2026-05-30T05%3A29%3A10Z&sks=b&skv=2023-01-03&sv=2023-01-03&spr=https&se=2026-05-30T05%3A29%3A10Z&sr=b&sp=r&sig=M7QvtzTnDKSCEVMnITsb9HUYDmEZVl7R0npLEtmFlE4%3D"
+    },
+    {
+      "Name": "Screenshot 1447-11-19 at 8.31.07 pm",
+      "Schema": "i",
+      "IsSampleData": false,
+      "IsWritable": false,
+      "Type": "ResourceInfo",
+      "FileName": "9aecf161-1afb-4186-9904-7cd47d83610f.png",
+      "Path": "Assets\\Images\\9aecf161-1afb-4186-9904-7cd47d83610f.png",
+      "Content": "Image",
+      "ResourceKind": "LocalFile",
+      "RootPath": "https://dsprdil102seau.blob.core.windows.net/430a3675-f28b-44a4-a68b-a2d25dcce277-1/resource/OWFlY2YxNjEtMWFmYi00MTg2LTk5MDQtN2NkNDdkODM2MTBm.png?skoid=58690ece-ec83-4ce2-9ce8-883d4d6a54ee&sktid=975f013f-7f24-47e8-a7d3-abc4752bf346&skt=2026-05-29T05%3A14%3A10Z&ske=2026-05-30T05%3A29%3A10Z&sks=b&skv=2023-01-03&sv=2023-01-03&spr=https&se=2026-05-30T05%3A29%3A10Z&sr=b&sp=r&sig=ImZKacild1PM4Y2QKrHzS3%2BzJ8Yp82aHn7zK2rJrTCo%3D"
+    }
+  ]
+}

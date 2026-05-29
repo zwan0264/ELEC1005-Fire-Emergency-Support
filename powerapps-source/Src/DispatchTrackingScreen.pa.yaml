@@ -1,0 +1,310 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  DispatchTrackingScreen:
+    Properties:
+      OnVisible: |-
+        =Refresh(EmergencyIncidents);
+        Set(
+            varSelectedIncident,
+            LookUp(EmergencyIncidents, ID = varSelectedIncident.ID)
+        )
+    Children:
+      - rectDispatchHeader:
+          Control: Rectangle@2.3.0
+          Properties:
+            Fill: =RGBA(255, 0, 0, 1)
+            Height: =140
+            Width: =640
+      - lblDispatchHeader:
+          Control: ModernText@1.0.0
+          Properties:
+            Color: =RGBA(255, 255, 255, 1)
+            Fill: =RGBA(255, 0, 0, 1)
+            Height: =70
+            Size: =33
+            Text: ="Dispatch in Progress"
+            Width: =320
+            X: =160
+            Y: =35
+      - btnDispatchBack:
+          Control: ModernButton@1.0.0
+          Properties:
+            Appearance: =ButtonAppearance.Transparent
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =52
+            OnSelect: |-
+              =Set(varSelectedIncident, Blank());
+              Navigate(IncidentOverviewScreen, ScreenTransition.Fade)
+            Text: ="← Back"
+            Width: =120
+            X: =21
+            Y: =21
+      - btnDispatchCardBackground:
+          Control: ModernButton@1.0.0
+          Properties:
+            Appearance: =ButtonAppearance.Transparent
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            BorderThickness: =1
+            Height: =938
+            RadiusBottomLeft: =10
+            RadiusBottomRight: =10
+            RadiusTopLeft: =10
+            RadiusTopRight: =10
+            Text: =""
+            Width: =610
+            X: =14
+            Y: =168
+      - lblDispatchStatusValue:
+          Control: ModernText@1.0.0
+          Properties:
+            FontWeight: =FontWeight.Semibold
+            Height: =56
+            Size: =33
+            Text: =Coalesce(varSelectedIncident.Status.Value, "Unknown")
+            Width: =352
+            X: =93
+            Y: =308
+      - lblDispatchStatusTitle:
+          Control: ModernText@1.0.0
+          Properties:
+            FontWeight: =FontWeight.Bold
+            Height: =62
+            Size: =33
+            Text: ="Current Status"
+            Width: =352
+            X: =40
+            Y: =195
+      - icoDispatchStatusClock:
+          Control: Classic/Icon@2.5.0
+          Properties:
+            Color: =RGBA(255, 120, 0, 1)
+            Icon: =Icon.Clock
+            X: =29
+            Y: =304
+      - lblDispatchStatusSubtitle:
+          Control: ModernText@1.0.0
+          Properties:
+            Size: =20
+            Text: ="En Route to incident"
+            Width: =284
+            X: =96
+            Y: =348
+      - icoDispatchSupportWarning:
+          Control: Classic/Icon@2.5.0
+          Properties:
+            BorderColor: =Color.Transparent
+            Color: =RGBA(180, 140, 0, 1)
+            Fill: =Color.White
+            Height: =70
+            Icon: =Icon.Warning
+            Visible: =Coalesce(varSelectedIncident.'Support Requested', false)
+            Width: =94
+            X: =34
+            Y: =sepDispatchStatusLine.Y + 5
+      - lblDispatchSupportRequested:
+          Control: ModernText@1.0.0
+          Properties:
+            FontWeight: =FontWeight.Semibold
+            Height: =66
+            Size: =30
+            Text: ="Additional Support Requested"
+            Visible: =Coalesce(varSelectedIncident.'Support Requested', false)
+            Width: =500
+            X: =140
+            Y: =icoDispatchSupportWarning.Y - 2
+      - lblDispatchLocation:
+          Control: ModernText@1.0.0
+          Properties:
+            FontWeight: =FontWeight.Semibold
+            Height: =53
+            Size: =30
+            Text: |-
+              =
+              With(
+                  { locText: Coalesce(Text(varSelectedIncident.Location), "") },
+                  If(
+                      IsBlank(locText),
+                      "Location: Location not available",
+                      IfError(
+                          With(
+                              { parts: Split(locText, ",") },
+                              "Location: " &
+                              Text(Value(Trim(First(parts).Value)), "[$-en-US]0.000000") & ", " &
+                              Text(Value(Trim(Last(parts).Value)), "[$-en-US]0.000000")
+                          ),
+                          "Location: " & locText
+                      )
+                  )
+              )
+            Width: =btnDispatchCardBackground.X + btnDispatchCardBackground.Width - lblDispatchLocation.X - 24
+            X: =icoDispatchLocation.X + icoDispatchLocation.Width + 18
+            Y: =icoDispatchLocation.Y - 2
+      - lblDispatchUpdated:
+          Control: ModernText@1.0.0
+          Properties:
+            FontWeight: =FontWeight.Semibold
+            Height: =52
+            Size: =30
+            Text: |-
+              =Text(
+                  Coalesce(varSelectedIncident.'Last Updated', varSelectedIncident.'Created Time'),
+                  "[$-en-US]h:mm AM/PM"
+              )
+            Width: =352
+            X: =icoDispatchUpdated.X + icoDispatchUpdated.Width + 140
+            Y: =icoDispatchUpdated.Y - 2
+      - lblETA:
+          Control: ModernText@1.0.0
+          Properties:
+            FontWeight: =FontWeight.Semibold
+            Height: =66
+            Size: =30
+            Text: |-
+              ="ETA: " &
+              If(
+                  Coalesce(varSelectedIncident.'Support Requested', false),
+                  "8",
+                  Switch(
+                      varSelectedIncident.'Incident Type'.Value,
+                      "Structure Fire", "5",
+                      "Medical Emergency", "6",
+                      "Vehicle Fire", "7",
+                      "Animal Rescue", "8",
+                      "Other Emergency", "9",
+                      "8"
+                  )
+              )
+              & " minutes"
+            Width: =467
+            X: =118
+            Y: =icoDispatchEta.Y - 2
+      - lblDispatchUpdatedTitle:
+          Control: ModernText@1.0.0
+          Properties:
+            FontWeight: =FontWeight.Semibold
+            Height: =54
+            Size: =30
+            Text: ="Updated:"
+            Width: =154
+            X: =115
+            Y: =icoDispatchUpdated.Y - 2
+      - sepDispatchSupportLine:
+          Control: ModernText@1.0.0
+          Properties:
+            Text: ="______________________________________________________"
+            Visible: =Coalesce(varSelectedIncident.'Support Requested', false)
+            Width: =610
+            X: =21
+            Y: =icoDispatchSupportWarning.Y + 30
+      - sepDispatchStatusLine:
+          Control: ModernText@1.0.0
+          Properties:
+            Height: =1
+            Text: ="______________________________________________________"
+            Visible: =Coalesce(varSelectedIncident.'Support Requested', false)
+            Width: =610
+            X: =21
+            Y: =lblDispatchStatusSubtitle.Y + lblDispatchStatusSubtitle.Height + 28
+      - sepDispatchActionLine:
+          Control: ModernText@1.0.0
+          Properties:
+            Text: ="______________________________________________________"
+            Width: =610
+            X: =30
+            Y: =lblETA.Y + lblETA.Height + 25
+      - btnMarkDone:
+          Control: ModernButton@1.0.0
+          Properties:
+            BasePaletteColor: =RGBA(9, 224, 9, 1)
+            Height: =75
+            Icon: ="CheckmarkCircle"
+            OnSelect: |-
+              =Patch(
+                  EmergencyIncidents,
+                  LookUp(EmergencyIncidents, ID = varSelectedIncident.ID),
+                  {
+                      Status: {Value: "Done"},
+                      'Last Updated': Now()
+                  }
+              );
+
+              Refresh(EmergencyIncidents);
+
+              Set(varSelectedIncident, Blank());
+
+              Patch(
+                  EmergencyIncidents,
+                  LookUp(EmergencyIncidents, ID = varSelectedIncident.ID),
+                  {
+                      Status: {Value: "Done"},
+                      'Last Updated': Now()
+                  }
+              );
+
+              Refresh(EmergencyIncidents);
+
+              Set(varSelectedIncident, Blank());
+
+              Navigate(IncidentOverviewScreen, ScreenTransition.Fade)
+            Text: ="Mark as Done"
+            Width: =468
+            X: =78
+            Y: =sepDispatchActionLine.Y + 40
+      - icoDispatchLocation:
+          Control: ModernIcon@1.1.0
+          Properties:
+            Icon: ="Globe"
+            IconColor: =RGBA(215, 58, 60, 1)
+            X: =60
+            Y: =lblDispatchIncidentType.Y + lblDispatchIncidentType.Height + 62
+      - icoDispatchUpdated:
+          Control: ModernIcon@1.1.0
+          Properties:
+            Icon: ="Calendar"
+            X: =60
+            Y: =lblDispatchLocation.Y + lblDispatchLocation.Height + 62
+      - icoDispatchEta:
+          Control: ModernIcon@1.1.0
+          Properties:
+            Icon: ="Clock"
+            IconColor: =RGBA(52, 152, 47, 1)
+            X: =60
+            Y: =lblDispatchUpdated.Y + lblDispatchUpdated.Height + 62
+      - icoDispatchIncidentType:
+          Control: ModernIcon@1.1.0
+          Properties:
+            Height: =79
+            Icon: ="MoreHorizontal"
+            IconColor: =RGBA(240, 98, 15, 1)
+            Width: =40
+            X: =62
+            Y: |-
+              =If(
+                  Coalesce(varSelectedIncident.'Support Requested', false),
+                  sepDispatchSupportLine.Y + 88,
+                  sepDispatchStatusLine.Y + 10
+              )
+      - lblDispatchIncidentType:
+          Control: ModernText@1.0.0
+          Properties:
+            FontWeight: =FontWeight.Semibold
+            Height: =61
+            Size: =30
+            Text: |-
+              ="Type: " &
+              If(
+                  IsBlank(varSelectedIncident.'Incident Type') || IsBlank(varSelectedIncident.'Incident Type'.Value),
+                  "Unknown",
+                  varSelectedIncident.'Incident Type'.Value
+              )
+            Width: =474
+            X: =icoDispatchIncidentType.X + icoDispatchIncidentType.Width + 18
+            Y: =icoDispatchIncidentType.Y - 2

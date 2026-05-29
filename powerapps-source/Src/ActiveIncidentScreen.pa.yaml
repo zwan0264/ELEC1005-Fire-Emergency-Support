@@ -1,0 +1,306 @@
+# ************************************************************************************************
+# Warning: YAML source code for Canvas Apps should only be used to review changes made within Power Apps Studio and for minor edits (Preview).
+# Use the maker portal to create and edit your Power Apps.
+# 
+# The schema file for Canvas Apps is available at https://go.microsoft.com/fwlink/?linkid=2304907
+# 
+# For more information, visit https://go.microsoft.com/fwlink/?linkid=2292623
+# ************************************************************************************************
+Screens:
+  ActiveIncidentScreen:
+    Properties:
+      Fill: =RGBA(246, 245, 245, 1)
+    Children:
+      - rectActiveHeader:
+          Control: Rectangle@2.3.0
+          Properties:
+            Fill: =RGBA(255, 0, 0, 1)
+            Height: =149
+            Width: =640
+      - btnActiveBack:
+          Control: ModernButton@1.0.0
+          Properties:
+            Appearance: =ButtonAppearance.Subtle
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =52
+            OnSelect: |-
+              =Set(varSelectedIncident, Blank());
+              Navigate(IncidentOverviewScreen, ScreenTransition.Fade)
+            Text: ="← Back"
+            Width: =133
+            Y: =23
+      - lblActiveHeader:
+          Control: ModernText@1.0.0
+          Properties:
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =66
+            Size: =33
+            Text: ="Responder Dashboard"
+            Width: =334
+            X: =153
+            Y: =41
+      - rectIncidentInfoCard:
+          Control: Rectangle@2.3.0
+          Properties:
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =240
+            Width: =554
+            X: =43
+            Y: =187
+      - lblActiveIncidentId:
+          Control: ModernText@1.0.0
+          Properties:
+            Height: =52
+            Text: |-
+              ="Incident: " & varSelectedIncident.'Incident ID'
+            Width: =494
+            X: =103
+            Y: =210
+      - lblActiveStatus:
+          Control: ModernText@1.0.0
+          Properties:
+            Height: =52
+            Text: |-
+              ="Status: " & varSelectedIncident.Status.Value
+            Width: =494
+            X: =106
+            Y: =262
+      - lblActiveUpdated:
+          Control: ModernText@1.0.0
+          Properties:
+            Height: =52
+            Text: |-
+              ="Updated: " & Text(varSelectedIncident.'Last Updated', "h:mm AM/PM")
+            Width: =494
+            X: =103
+            Y: =365
+      - icoIncidentId:
+          Control: ModernIcon@1.1.0
+          Properties:
+            Icon: ="DocumentBulletList"
+            IconColor: =RGBA(215, 58, 60, 1)
+            X: =61
+            Y: =215
+      - icoActiveStatus:
+          Control: ModernIcon@1.1.0
+          Properties:
+            Icon: ="Info"
+            IconColor: =RGBA(240, 98, 15, 1)
+            X: =61
+            Y: =267
+      - icoActiveUpdated:
+          Control: ModernIcon@1.1.0
+          Properties:
+            Icon: ="Clock"
+            IconColor: =RGBA(215, 58, 60, 1)
+            X: =61
+            Y: =370
+      - rectActiveLocationCard:
+          Control: Rectangle@2.3.0
+          Properties:
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =150
+            Width: =554
+            X: =43
+            Y: =445
+      - lblActiveLocation:
+          Control: ModernText@1.0.0
+          Properties:
+            Text: |-
+              ="Location: " & varSelectedIncident.Location
+            Width: =494
+            X: =103
+            Y: =445
+      - icoActiveLocation:
+          Control: ModernIcon@1.1.0
+          Properties:
+            Icon: ="Search"
+            X: =61
+            Y: =453
+      - rectVerificationCard:
+          Control: Rectangle@2.3.0
+          Properties:
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =240
+            Width: =554
+            X: =43
+            Y: =625
+      - btnAcceptDispatch:
+          Control: ModernButton@1.0.0
+          Properties:
+            BasePaletteColor: =RGBA(184, 0, 0, 1)
+            Icon: ="Send"
+            OnSelect: |-
+              =Patch(
+                  EmergencyIncidents,
+                  LookUp(EmergencyIncidents, ID = varSelectedIncident.ID),
+                  {
+                      Status: {Value: "On the Way"},
+                      'Last Updated': Now()
+                  }
+              );
+
+              Refresh(EmergencyIncidents);
+
+              Set(
+                  varSelectedIncident,
+                  LookUp(EmergencyIncidents, ID = varSelectedIncident.ID)
+              );
+
+              Navigate(DispatchTrackingScreen, ScreenTransition.Fade)
+            Text: ="Accept / Dispatch"
+            Width: =554
+            X: =43
+            Y: =884
+      - btnFlagFalseReport:
+          Control: ModernButton@1.0.0
+          Properties:
+            Appearance: =ButtonAppearance.Outline
+            BorderColor: =RGBA(184, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            BorderThickness: =2
+            Color: =RGBA(184, 0, 0, 0.01)
+            Icon: ="Dismiss"
+            IconStyle: =IconStyle.Filled
+            OnSelect: |-
+              =Patch(
+                  EmergencyIncidents,
+                  LookUp(EmergencyIncidents, ID = varSelectedIncident.ID),
+                  {
+                      Status: {Value: "False Report"},
+                      'Last Updated': Now()
+                  }
+              );
+
+              Refresh(EmergencyIncidents);
+
+              Set(varSelectedIncident, Blank());
+
+              Navigate(IncidentOverviewScreen, ScreenTransition.Fade)
+            RadiusBottomLeft: =1
+            RadiusBottomRight: =1
+            RadiusTopLeft: =1
+            RadiusTopRight: =1
+            Text: ="Flag False Report"
+            Width: =554
+            X: =43
+            Y: =966
+      - btnRequestSupport:
+          Control: ModernButton@1.0.0
+          Properties:
+            Appearance: =ButtonAppearance.Secondary
+            Icon: ="PeopleAdd"
+            OnSelect: |-
+              =Set(
+                  varSelectedIncident,
+                  Patch(
+                      EmergencyIncidents,
+                      varSelectedIncident,
+                      {
+                          Status: {Value: "On the Way"},
+                          'Support Requested': true,
+                          'Last Updated': Now()
+                      }
+                  )
+              );
+
+              Refresh(EmergencyIncidents);
+
+              Navigate(DispatchTrackingScreen, ScreenTransition.Fade)
+            Text: ="Request Support"
+            Width: =554
+            X: =43
+            Y: =1048
+      - lblVerificationTitle:
+          Control: ModernText@1.0.0
+          Properties:
+            Height: =55
+            Text: ="Verification Information"
+            Width: =361
+            X: =103
+            Y: =630
+      - icoVerificationCheck:
+          Control: ModernIcon@1.1.0
+          Properties:
+            Icon: ="Checkmark"
+            X: =61
+            Y: =636
+      - lblGPSStatusTitle:
+          Control: ModernText@1.0.0
+          Properties:
+            Height: =61
+            Size: =20
+            Text: ="GPS Status:"
+            Width: =286
+            X: =84
+            Y: =690
+      - lblReportsFromSameReporterTitle:
+          Control: ModernText@1.0.0
+          Properties:
+            Height: =61
+            Size: =20
+            Text: ="Reports from same reporter:"
+            Width: =286
+            X: =84
+            Y: =782
+      - icoSameDeviceReports:
+          Control: ModernIcon@1.1.0
+          Properties:
+            Height: =32
+            Icon: ="Person"
+            IconColor: =RGBA(109, 49, 162, 1)
+            Width: =32
+            X: =52
+            Y: =796
+      - icoLocationAccuracy:
+          Control: ModernIcon@1.1.0
+          Properties:
+            Height: =32
+            Icon: ="Settings"
+            IconColor: =RGBA(52, 152, 47, 1)
+            Width: =32
+            X: =52
+            Y: =709
+      - lblGPSStatusValue:
+          Control: ModernText@1.0.0
+          Properties:
+            Color: |-
+              =If(
+                  varSelectedIncident.'GPS Status'.Value = "High",
+                  Color.Green,
+                  varSelectedIncident.'GPS Status'.Value = "Medium",
+                  Color.Orange,
+                  varSelectedIncident.'GPS Status'.Value = "Low",
+                  Color.Red,
+                  Color.Black
+              )
+            Height: =44
+            Size: =20
+            Text: =varSelectedIncident.'GPS Status'.Value
+            Width: =110
+            X: =487
+            Y: =703
+      - lblReportsFromSameReporterValue:
+          Control: ModernText@1.0.0
+          Properties:
+            Size: =20
+            Text: =Text(varSelectedIncident.'Reports From Same Reporter')
+            Width: =110
+            X: =487
+            Y: =787
+      - lblActiveIncidentType:
+          Control: ModernText@1.0.0
+          Properties:
+            Height: =52
+            Text: |-
+              ="Incident Type: " & varSelectedIncident.'Incident Type'.Value
+            Width: =494
+            X: =106
+            Y: =314
+      - icoIncidentType:
+          Control: ModernIcon@1.1.0
+          Properties:
+            Icon: ="MoreHorizontal"
+            IconColor: =RGBA(240, 98, 15, 1)
+            X: =61
+            Y: =319
