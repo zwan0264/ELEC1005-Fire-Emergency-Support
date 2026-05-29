@@ -192,6 +192,5 @@ The full testing evidence, technical documentation, user guide, and reflection a
 ## Team
 
 The Bug Slayers  
-ELEC1005 Assignment 2  
-University of Sydney
+
 
