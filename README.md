@@ -101,35 +101,52 @@ The app uses four main incident statuses.
 
 The **Support Requested** field is stored separately as a Yes/No value. It is not treated as a separate incident status.
 
+
 ## Repository Structure
 
 ```text
-ELEC1005-Fire-Emergency-Support/
+ELEC1005-Fire-Emergency-Support
 │
 ├── README.md
 │
-├── powerapp-source/
-│   └── Fire-Emergency-Support-Unpacked/
-│       ├── Src/
-│       ├── Assets/
-│       ├── DataSources/
-│       ├── Connections/
-│       └── CanvasManifest.json
+├── diagrams/
+│   ├── CivilianFlow.jpg
+│   ├── DataModel.jpg
+│   ├── ResponderFlow.jpg
+│   ├── StateDiagram.jpg
+│   ├── SystemArchitecture.jpg
+│   └── UseCaseDiagram.jpg
+│
+├── docs/
+│   ├── The Bug Slayers-Technical documentation.pdf
+│   ├── The Bug Slayers-Quality Assurance and Testing.pdf
+│   ├── The Bug Slayers-User Guide for Community Safety Volunteers.pdf
+│   └── The Bug Slayers-Teamwork and Reflection.pdf
 │
 ├── exported-app/
-│   └── ELEC1005-Fire-Emergency-SupportApp.msapp
 │
-├── diagrams/
-│   ├── use-case-diagram.png
-│   ├── civilian-flow.png
-│   ├── responder-flow.png
-│   ├── architecture-backend.png
-│   ├── backend-data-model.png
-│   └── state-diagram.png
-│
-└── docs/
-    └── README-assets/
+└── powerapps-source/
+    ├── AppTests/
+    ├── Assets/
+    │   └── Images/
+    ├── Controls/
+    ├── References/
+    ├── Resources/
+    └── Src/
+        ├── ActiveIncidentScreen.pa.yaml
+        ├── App.pa.yaml
+        ├── DispatchTrackingScreen.pa.yaml
+        ├── EmergencyConfirmationScreen.pa.yaml
+        ├── EmergencyRequestScreen.pa.yaml
+        ├── EmergencyStatusScreen.pa.yaml
+        ├── IncidentOverviewScreen.pa.yaml
+        ├── LoginSuccessScreen.pa.yaml
+        ├── ResponderLoginScreen.pa.yaml
+        ├── ResponderSignupScreen.pa.yaml
+        ├── RoleSelectionScreen.pa.yaml
+        └── SignUpSuccessScreen.pa.yaml
 ```
+
 
 ## Testing Summary
 
