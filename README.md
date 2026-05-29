@@ -104,5 +104,76 @@ The **Support Requested** field is stored separately as a Yes/No value. It is no
 ## Repository Structure
 
 ```text
-powerapp-source/
+Assignment-2-PowerApp/
+│
+├── README.md
+│
+├── powerapp-source/
+│   └── Assignment2App-Unpacked/
+│       ├── Src/
+│       ├── Assets/
+│       ├── DataSources/
+│       ├── Connections/
+│       └── CanvasManifest.json
+│
+├── exported-app/
+│   └── Assignment2App.msapp
+│
+├── diagrams/
+│   ├── use-case-diagram.png
+│   ├── civilian-flow.png
+│   ├── responder-flow.png
+│   ├── architecture-backend.png
+│   ├── backend-data-model.png
+│   └── state-diagram.png
+│
+└── docs/
+    └── README-assets/
+
+## Testing Summary
+
+The app was tested using a combination of:
+
+- Power Apps Test Studio
+- manual UI checks
+- SharePoint backend evidence
+- Power Apps Monitor
+- accessibility review
+
+Test Studio was useful for repeatable workflow checks, but it did not replay every control reliably. For example, some modern dropdown controls and fast screen transitions had to be supported with manual screenshots and backend checks.
+
+These limitations and workarounds are documented in our testing documentation submitted with the Confluence export.
+
+## Known Prototype Limitations
+
+This is a functional prototype rather than a production emergency system.
+
+Known limitations include:
+
+- location is shown as GPS coordinates rather than a street address
+- responder login is implemented using a prototype SharePoint list
+- false report decisions are made manually by responders
+- Power Apps Test Studio does not reliably replay every modern control
+- the prototype does not include real emergency service integration
+
+## How to Use This Repository
+
+This repository is mainly for teaching staff and future maintainers who want to inspect the Power Apps source structure.
+
+To review the implementation:
+
+1. Open the `powerapp-source` folder.
+2. Review the screen and component source files.
+3. Check the data source references for the SharePoint lists.
+4. Compare the implementation with the diagrams and documentation submitted in Confluence.
+
+To run the app, use the shared Power Apps application link provided in the assignment submission.
+
+The full testing evidence, technical documentation, user guide, and reflection are included in the submitted Confluence documentation suite.
+
+## Team
+
+The Bug Slayers  
+ELEC1005 Assignment 2  
+University of Sydney
 
