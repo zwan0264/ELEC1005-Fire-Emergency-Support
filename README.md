@@ -104,12 +104,12 @@ The **Support Requested** field is stored separately as a Yes/No value. It is no
 ## Repository Structure
 
 ```text
-Assignment-2-PowerApp/
+ELEC1005-Fire-Emergency-Support/
 │
 ├── README.md
 │
 ├── powerapp-source/
-│   └── Assignment2App-Unpacked/
+│   └── Fire-Emergency-Support-Unpacked/
 │       ├── Src/
 │       ├── Assets/
 │       ├── DataSources/
@@ -117,7 +117,7 @@ Assignment-2-PowerApp/
 │       └── CanvasManifest.json
 │
 ├── exported-app/
-│   └── Assignment2App.msapp
+│   └── ELEC1005-Fire-Emergency-SupportApp.msapp
 │
 ├── diagrams/
 │   ├── use-case-diagram.png
