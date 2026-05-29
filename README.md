@@ -129,6 +129,7 @@ Assignment-2-PowerApp/
 │
 └── docs/
     └── README-assets/
+```
 
 ## Testing Summary
 
